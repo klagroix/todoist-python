@@ -63,6 +63,8 @@ class ItemsManager(Manager, AllMixin, GetByIdMixin, SyncMixin):
             args["parent_id"] = kwargs.get("parent_id")
         elif "project_id" in kwargs:
             args["project_id"] = kwargs.get("project_id")
+        elif "section_id" in kwargs:
+            args["section_id"] = kwargs.get("section_id")
         else:
             raise TypeError("move() takes one of parent_id or project_id arguments")
         cmd = {"type": "item_move", "uuid": self.api.generate_uuid(), "args": args}
