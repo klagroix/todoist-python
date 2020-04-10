@@ -95,8 +95,11 @@ class Item(Model):
         elif "project_id" in kwargs:
             self.api.items.move(self["id"], project_id=kwargs.get("project_id"))
             self.data["project_id"] = kwargs.get("project_id")
+        elif "section_id" in kwargs:
+            self.api.items.move(self["id"], section_id=kwargs.get("section_id"))
+            self.data["section_id"] = kwargs.get("section_id")
         else:
-            raise TypeError("move() takes one of parent_id or project_id arguments")
+            raise TypeError("move() takes one of parent_id, project_id, or section_id arguments")
 
     def reorder(self, child_order):
         """
